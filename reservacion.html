@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <title>Reservaciones || Coral Dreams</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reserva.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="user-info">
+                <img src="{{ url_for('static', filename=session['profile_pic']) }}" alt="Profile Picture">
+                <span>BIENVENIDO, {{ username }}</span>
+            </div>
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='nati.png') }}" alt="Logo" class="logo">
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <section id="availability-section" class="availability-container">
+                <h2>Disponibilidad</h2>
+                <form id="availability-form" onsubmit="redirectToOptions(event)">
+                    <div class="input-group">
+                        <label for="check-in">Check-in</label>
+                        <input type="date" id="check-in" name="check_in" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="check-out">Check-out</label>
+                        <input type="date" id="check-out" name="check_out" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="rooms">Cuartos</label>
+                        <input type="number" id="rooms" name="rooms" min="1" value="1" required>
+                        <button type="button" onclick="increaseValue('rooms')">+</button>
+                        <button type="button" onclick="decreaseValue('rooms')">-</button>
+                    </div>
+                    <div class="input-group">
+                        <label for="guests">Huéspedes</label>
+                        <input type="number" id="guests" name="guests" min="1" value="2" required>
+                        <button type="button" onclick="increaseValue('guests')">+</button>
+                        <button type="button" onclick="decreaseValue('guests')">-</button>
+                    </div>
+                    <button type="submit" class="search-button">BUSCAR</button>
+                </form>
+                <a href="{{ url_for('index') }}" class="btn-back">Regresar a la página principal</a>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function increaseValue(id) {
+            const input = document.getElementById(id);
+            input.value = parseInt(input.value) + 1;
+        }
+
+        function decreaseValue(id) {
+            const input = document.getElementById(id);
+            if (input.value > 1) {
+                input.value = parseInt(input.value) - 1;
+            }
+        }
+
+        function redirectToOptions(event) {
+            event.preventDefault();
+            // Aquí puedes realizar validaciones adicionales si es necesario
+            // Luego redirige a la página con las opciones de reserva
+            window.location.href = "{{ url_for('reservation_options') }}"; 
+        }
+    </script>
+</body>
+</html>

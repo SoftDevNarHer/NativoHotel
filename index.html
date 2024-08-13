@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <title>Página Principal || Coral Dreams</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/index.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="user-info">
+                <img src="{{ url_for('static', filename=session['profile_pic']) }}" alt="Profile Picture">
+                <span>BIENVENIDO, {{ username }}</span>
+            </div>
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='nati.png') }}" alt="Logo" class="logo">
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Tarjetas informativas -->
+        <div class="info-card-container">
+            <div class="info-card1">
+                <h3>Total Reservaciones Activas</h3>
+                <p>150</p>
+            </div>
+            <div class="info-card2">
+                <h3>Cuartos Disponibles</h3>
+                <p>25</p>
+            </div>
+            <div class="info-card3">
+                <h3>Cuartos en Mantenimiento</h3>
+                <p>5</p>
+            </div>
+        </div>
+
+        <main class="main-content" id="mainContent">
+            <div class="card-container">
+                <a href="{{ url_for('reservacion') }}" class="card">
+                    <img src="{{ url_for('static', filename='reservacion.png') }}" alt="Reservación">
+                    <h2>Realizar Reservación</h2>
+                </a>
+                <a href="{{ url_for('queja') }}" class="card">
+                    <img src="{{ url_for('static', filename='queja.png') }}" alt="Queja">
+                    <h2>Registrar Queja</h2>
+                </a>
+                <a href="{{ url_for('mantenimiento') }}" class="card">
+                    <img src="{{ url_for('static', filename='mantenimiento.png') }}" alt="Mantenimiento">
+                    <h2>Reportar Mantenimiento</h2>
+                </a>
+                <a href="{{ url_for('clientes') }}" class="card">
+                    <img src="{{ url_for('static', filename='clientes.png') }}" alt="Cliente">
+                    <h2>Consultar información de Cliente</h2>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Botón de salir en la parte inferior izquierda -->
+    <div class="logout-container">
+        <a href="{{ url_for('logout') }}" class="logout-button">
+            <img src="{{ url_for('static', filename='logout-icon.png') }}" alt="Salir" class="logout-icon">
+            SALIR
+        </a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <title>Opciones de Reserva || Coral Dreams</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/opre.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="user-info">
+                <img src="{{ url_for('static', filename=session['profile_pic']) }}" alt="Profile Picture">
+                <span>BIENVENIDO, {{ username }}</span>
+            </div>
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='nati.png') }}" alt="Logo" class="logo">
+            </div>
+        </div>
+    </header>
+
+    <div class="container-no-sidebar">
+        <main>
+            <section class="options-container">
+                <h2>Seleccione su Opción de Reserva</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <h3>Opción 1: Individual</h3>
+                        <p>Habitación individual con una cama.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Opción 2: Doble</h3>
+                        <p>Habitación doble con dos camas.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Opción 3: Suite</h3>
+                        <p>Suite con cama king size y vista al mar.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Opción 4: Familiar</h3>
+                        <p>Habitación familiar con varias camas.</p>
+                    </div>
+                </div>
+            </section>
+            <a href="{{ url_for('index') }}" class="btn-back">Regresar a la página principal</a>
+        </main>
+    </div>
+</body>
+</html>
